@@ -10,23 +10,12 @@
  */
 
 
-public abstract class Monster extends DungeonCharacter
+public abstract class Monster //extends DungeonCharacter
 {
-	protected double chanceToHeal;
-	protected int minHeal, maxHeal;
-
-//-----------------------------------------------------------------
-  public Monster(String name, int hitPoints, int attackSpeed,
-				     double chanceToHit, double chanceToHeal,
-					 int damageMin, int damageMax,
-					 int minHeal, int maxHeal)
-  {
-	super(name, hitPoints, attackSpeed, chanceToHit, damageMin, damageMax);
-	this.chanceToHeal = chanceToHeal;
-	this.maxHeal = maxHeal;
-	this.minHeal = minHeal;
-
-  }//end monster construcotr
+	static double chanceToHeal;
+	static int minHeal;
+	static int maxHeal;
+	static DungeonCharacter Monster;
 
 //-----------------------------------------------------------------
   public void heal()
@@ -34,27 +23,42 @@ public abstract class Monster extends DungeonCharacter
 	boolean canHeal;
 	int healPoints;
 
-	canHeal = (Math.random() <= chanceToHeal) && (hitPoints > 0);
+	canHeal = (Math.random() <= chanceToHeal) && (Monster.getHitPoints()> 0);
 
 	if (canHeal)
 	{
 		healPoints = (int)(Math.random() * (maxHeal - minHeal + 1)) + minHeal;
-		addHitPoints(healPoints);
-		System.out.println(name + " healed itself for " + healPoints + " points.\n"
-							+ "Total hit points remaining are: " + hitPoints);
+		Monster.addHitPoints(healPoints);
+		System.out.println(Monster.getName() + " healed itself for " + healPoints + " points.\n"
+							+ "Total hit points remaining are: " + Monster.getHitPoints());
 		System.out.println();
 	}//end can heal
-
-
   }//end heal method
 
 //-----------------------------------------------------------------
  public void subtractHitPoints(int hitPoints)
  {
-		super.subtractHitPoints(hitPoints);
+		Monster.subtractHitPoints(hitPoints);
 		heal();
-
  }//end method
-
-
+ 
+//----------------------------------------------------------------
+ //Getters
+	 public String getName()
+	 {
+		 return Monster.getName();
+	 }
+	 public boolean isAlive()
+	 {
+		 return Monster.isAlive();
+	 }
+	public void attack(Hero theHero) 
+	{
+		Monster.attack(theHero);
+	}
+	public int getAttackSpeed() 
+	{
+		return Monster.getAttackSpeed();
+	}
+//----------------------------------------------------------------
 }//end Monster class

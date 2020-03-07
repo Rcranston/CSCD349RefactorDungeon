@@ -112,9 +112,9 @@ Returns: nothing
 This method calls: getAttackSpeed()
 This method is called by: external sources
 ---------------------------------------------------------*/
-	public void battleChoices(DungeonCharacter opponent)
+	public void battleChoices(Monster theMonster)
 	{
-	    numTurns = attackSpeed/opponent.getAttackSpeed();
+	    numTurns = attackSpeed/theMonster.getAttackSpeed();
 
 		if (numTurns == 0)
 			numTurns++;

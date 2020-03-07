@@ -33,7 +33,7 @@
  * @version 1.0
  */
 
-public abstract class DungeonCharacter //implements Comparable
+public class DungeonCharacter //implements Comparable
 {
 
 	protected String name;
@@ -78,28 +78,28 @@ public abstract class DungeonCharacter //implements Comparable
 
 
 /*-------------------------------------------------------
-addHitPoints is used to increment the hitpoints a dungeon character has
+addHitPoints is used to increment the hit points a dungeon character has
 
 Receives: number of hit points to add
 Returns: nothing
 
 This method calls: nothing
-This method is called by: heal method of monsters and Sorceress
+This method is called by: heal method of monsters and Sorcerers
 ---------------------------------------------------------*/
-	public void addHitPoints(int hitPoints)
+	public void addHitPoints(int hitPoint)
 	{
-		if (hitPoints <=0)
+		if (hitPoint <=0)
 			System.out.println("Hitpoint amount must be positive.");
 		else
 		{
-			this.hitPoints += hitPoints;
+			this.hitPoints += hitPoint;
 			//System.out.println("Remaining Hit Points: " + hitPoints);
 
 		}
 	}//end addHitPoints method
 
 /*-------------------------------------------------------
-subtractHitPoints is used to decrement the hitpoints a dungeon character has.
+subtractHitPoints is used to decrement the hit points a dungeon character has.
 It also reports the damage and remaining hit points (these things could be
 done in separate methods to make code more modular ;-)
 
@@ -148,7 +148,7 @@ This method is called by: unknown (intended for external use)
 /*-------------------------------------------------------
 attack allows character to attempt attack on opponent.  First, chance to hit
 is considered.  If a hit can occur, then the damage is calculated based on
-character's damage range.  This damage is then applied to the opponenet.
+character's damage range.  This damage is then applied to the opponent.
 
 Receives: opponent being attacked
 Returns: nothing
